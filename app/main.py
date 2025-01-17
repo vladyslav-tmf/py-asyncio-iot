@@ -15,7 +15,7 @@ async def setup_devices(service: IOTService) -> tuple[str, str, str]:
     speaker = SmartSpeakerDevice()
     toilet = SmartToiletDevice()
 
-    return await run_parallel(
+    return await asyncio.gather(
         service.register_device(hue_light),
         service.register_device(speaker),
         service.register_device(toilet),
